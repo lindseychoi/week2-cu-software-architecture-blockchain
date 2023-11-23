@@ -14,7 +14,8 @@ public class Block {
         this.previousHash = previousHash;
         this.timestamp = timestamp;
         this.nonce = nonce;
-        this.hash = null;
+        //changed the value of this.hash to calculateHash(), it was null before
+        this.hash = "";
     }
 
     public String getPreviousHash() {
@@ -33,6 +34,13 @@ public class Block {
         return hash;
     }
 
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public void setNonce(int nonce) {
+        this.nonce = nonce;
+    }
     public String calculatedHash() throws NoSuchAlgorithmException {
         return null;
     }

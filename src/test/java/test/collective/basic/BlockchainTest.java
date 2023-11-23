@@ -29,8 +29,10 @@ public class BlockchainTest {
 
     @Test
     public void isMined() throws NoSuchAlgorithmException {
+        System.out.println("here is mined in test");
         Block block = new Block("0", Instant.now().getEpochSecond(), 0);
         Block minedBlock = mine(block);
+        System.out.println("here is mined in test" + block + minedBlock);
         assertTrue(Blockchain.isMined(minedBlock));
     }
 
