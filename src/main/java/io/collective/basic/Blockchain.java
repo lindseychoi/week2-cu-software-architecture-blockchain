@@ -24,16 +24,40 @@ public class Blockchain {
 
     public boolean isValid() throws NoSuchAlgorithmException {
 
-            // todo - check an empty chain
 
+        boolean isValid = false;
+        // all this function needs to do is loop through a blockchain list and calculate if the hash
+        // and previous hash match, that's it
+
+            // todo - check an empty chain
+        if (blockChainList.isEmpty()) {
+            isValid = true;
 
             // todo - check a chain of one
-
+        } else if (blockChainList.size() == 1) {
+            //may need to do something here, but probably not, can't check
+            //previous hash if there isn't a list, so just return that it's valid
+            isValid = true;
 
             // todo - check a chain of many
+        } else if (blockChainList.size() >= 2) {
 
+            for (int i = 1; i < blockChainList.size(); i++) {
+                //get the block right now and the last block to compare the hashes using
+                //the gethash and getprevioushash methods from the block class
+                Block thisBlock = blockChainList.get(i);
+                Block lastBlock = blockChainList.get(i - 1);
+                //compare this calcuatedhash to the current hash, if they don't match then return false
+                //because they are not valid; do this for the block you're on and the previous block
+                if (Objects.equals(thisBlock.getPreviousHash(), lastBlock.getHash())) {
+                    isValid = true;
+                } else if (!Objects.equals(thisBlock.getPreviousHash(), lastBlock.getHash())) {
+                    isValid = false;
+                }
+            }
+        }
 
-        return false;
+        return isValid;
     }
 
     /// Supporting functions that you'll need.
