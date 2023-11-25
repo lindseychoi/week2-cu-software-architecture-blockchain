@@ -38,11 +38,8 @@ public class Block {
         this.hash = hash;
     }
 
-    public void setNonce(int nonce) {
-        this.nonce = nonce;
-    }
     public String calculatedHash() throws NoSuchAlgorithmException {
-        return null;
+        return calculateHash(this.previousHash + this.timestamp + this.nonce);
     }
 
     /// Supporting functions that you'll need.
